@@ -1,5 +1,6 @@
 package com.jay.spring.web;
 
+import com.jay.spring.domain.User;
 import org.junit.Before;
 import org.junit.Test;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -27,11 +28,19 @@ public class WebControllerTest {
     }
     @Test
     public void getUser() throws Exception {
-        mockMvc.perform(MockMvcRequestBuilders.post("/getUser")).andDo(print());
+        mockMvc.perform(MockMvcRequestBuilders.get("/getUser")).andDo(print());
     }
 
     @Test
     public void getUsers() throws Exception {
         mockMvc.perform(MockMvcRequestBuilders.post("/getUsers")).andDo(print());
+    }
+    @Test
+    public void testGetUser2() throws Exception {
+        User user=new User();
+        user.setName("小明");
+        user.setAge(12);
+        user.setPass("123456");
+        mockMvc.perform(MockMvcRequestBuilders.get("/getUser2").param("name",user.getName()).contentType("text/plain;charset=UTF-8")).andDo(print());
     }
 }

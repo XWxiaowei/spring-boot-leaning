@@ -1,7 +1,10 @@
 package com.jay.spring.web;
 
+import com.alibaba.fastjson.JSON;
 import com.jay.spring.domain.User;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.ArrayList;
@@ -12,8 +15,9 @@ import java.util.List;
  * @create 2018/6/12 12:41
  */
 @RestController
+@RequestMapping(produces = "text/plain;charset='utf-8'")
 public class WebController {
-    @RequestMapping("/getUser")
+    @RequestMapping(value = "/getUser",method = RequestMethod.POST)
     public User getUser() {
         User user=new User();
         user.setName("小明");
@@ -21,7 +25,7 @@ public class WebController {
         user.setPass("123456");
         return user;
     }
-    @RequestMapping("/getUsers")
+    @RequestMapping(value = "/getUsers",method = RequestMethod.POST)
     public List<User> getUsers() {
         List<User> users=new ArrayList<User>();
         User user1=new User();
@@ -35,5 +39,16 @@ public class WebController {
         user2.setPass("123456");
         users.add(user2);
         return users;
+    }
+
+    @RequestMapping(value = "getUser2", method = RequestMethod.GET)
+    public String getUser2(User user) {
+        return JSON.toJSONString(user);
+    }
+    @RequestMapping(value = "get/{name}", method = RequestMethod.GET)
+    public User get(@PathVariable String name) {
+        User user = new User();
+        user.setName(name);
+        return user;
     }
 }
