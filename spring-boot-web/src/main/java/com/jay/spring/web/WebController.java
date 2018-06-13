@@ -2,11 +2,13 @@ package com.jay.spring.web;
 
 import com.alibaba.fastjson.JSON;
 import com.jay.spring.domain.User;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
+import javax.validation.Valid;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -50,5 +52,12 @@ public class WebController {
         User user = new User();
         user.setName(name);
         return user;
+    }
+
+    @RequestMapping("/saveUser")
+    public void saveUser(@Valid User user, BindingResult result) {
+        System.out.println("user" + user.toString());
+//        if () {
+//        }
     }
 }
