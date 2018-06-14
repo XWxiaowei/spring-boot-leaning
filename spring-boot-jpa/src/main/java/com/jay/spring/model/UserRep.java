@@ -35,6 +35,12 @@ public class UserRep implements Serializable {
     @Column(nullable = false)
     private String regTime;
 
+    @Column(nullable = false)
+    private String firstName;
+
+    @Column(nullable = false)
+    private int age;
+
     public Long getId() {
         return id;
     }
@@ -83,14 +89,32 @@ public class UserRep implements Serializable {
         this.regTime = regTime;
     }
 
+    public String getFirstName() {
+        return firstName;
+    }
+
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
+    }
+
+    public int getAge() {
+        return age;
+    }
+
+    public void setAge(int age) {
+        this.age = age;
+    }
+
     public UserRep() {
     }
 
-    public UserRep(String userName, String passWord, String email, String nickName, String regTime) {
+    public UserRep(String userName, String passWord, String email, String nickName, String regTime, String firstName, int age) {
         this.userName = userName;
         this.passWord = passWord;
         this.email = email;
         this.nickName = nickName;
         this.regTime = regTime;
+        this.firstName = firstName;
+        this.age = age;
     }
 }
