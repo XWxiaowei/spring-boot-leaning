@@ -1,4 +1,4 @@
-package com.jay.spring.domain;
+package com.jay.spring.domain.primary;
 
 import com.jay.spring.model.UserRep;
 import org.springframework.data.domain.Page;

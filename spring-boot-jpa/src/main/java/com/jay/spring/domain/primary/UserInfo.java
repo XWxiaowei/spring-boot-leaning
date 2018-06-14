@@ -1,4 +1,4 @@
-package com.jay.spring.domain;
+package com.jay.spring.domain.primary;
 
 /**
  * @author xiang.wei
