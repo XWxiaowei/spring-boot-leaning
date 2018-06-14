@@ -5,6 +5,7 @@ import org.junit.Before;
 import org.junit.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.http.MediaType;
+import org.springframework.mock.web.MockHttpServletRequest;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
@@ -42,5 +43,12 @@ public class WebControllerTest {
         user.setAge(12);
         user.setPass("123456");
         mockMvc.perform(MockMvcRequestBuilders.get("/getUser2").param("name",user.getName()).contentType("text/plain;charset=UTF-8")).andDo(print());
+    }
+    @Test
+    public void testSaveUser() throws Exception {
+        mockMvc.perform(MockMvcRequestBuilders.post("/saveUser")
+                        .param("name","")
+                        .param("age","666")
+                        .param("pass","12345")).andDo(print());
     }
 }
