@@ -8,6 +8,7 @@ import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 
 import javax.transaction.Transactional;
+import java.util.List;
 
 /**
  * @author xiang.wei
@@ -26,13 +27,14 @@ public interface UserRepository extends JpaRepository<UserRep, Long> {
 
     /**
      * 限制查询
+     *
      * @return
      */
-    UserRep findFirstByOrderByLastnameAsc();
+    UserRep findFirstByOrderByLastNameAsc();
 
     UserRep findTopByOrderByAgeDesc();
 
-    Page<UserRep> queryFirst10ByLastname(String lastname, Pageable pageable);
+    Page<UserRep> queryFirst10ByLastName(String lastName, Pageable pageable);
 
     @Transactional
     @Modifying
@@ -46,4 +48,9 @@ public interface UserRepository extends JpaRepository<UserRep, Long> {
 
     @Query("select u from UserRep u where u.email = ?1")
     UserRep findByEmail(String email);
+
+    @Query("select u.userName,u.email,d.address,d.hobby from UserRep u,UserDetail d" +
+            " where u.id=d.userId AND d.hobby=?1")
+    List<UserInfo> findUserInfo(String hobby);
+
 }

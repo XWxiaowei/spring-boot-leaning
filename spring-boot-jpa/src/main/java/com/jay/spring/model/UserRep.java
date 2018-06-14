@@ -1,14 +1,9 @@
 package com.jay.spring.model;
 
-import org.hibernate.validator.constraints.Length;
-import org.hibernate.validator.constraints.NotEmpty;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-import javax.validation.constraints.Max;
-import javax.validation.constraints.Min;
 import java.io.Serializable;
 
 /**
@@ -40,6 +35,22 @@ public class UserRep implements Serializable {
 
     @Column(nullable = false)
     private int age;
+    @Column(nullable = false)
+    private String lastName;
+
+    public UserRep() {
+    }
+
+    public UserRep(String userName, String passWord, String email, String nickName, String regTime, String firstName, int age, String lastName) {
+        this.userName = userName;
+        this.passWord = passWord;
+        this.email = email;
+        this.nickName = nickName;
+        this.regTime = regTime;
+        this.firstName = firstName;
+        this.age = age;
+        this.lastName = lastName;
+    }
 
     public Long getId() {
         return id;
@@ -105,16 +116,11 @@ public class UserRep implements Serializable {
         this.age = age;
     }
 
-    public UserRep() {
+    public String getLastName() {
+        return lastName;
     }
 
-    public UserRep(String userName, String passWord, String email, String nickName, String regTime, String firstName, int age) {
-        this.userName = userName;
-        this.passWord = passWord;
-        this.email = email;
-        this.nickName = nickName;
-        this.regTime = regTime;
-        this.firstName = firstName;
-        this.age = age;
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
     }
 }
