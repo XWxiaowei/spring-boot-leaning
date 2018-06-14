@@ -68,6 +68,6 @@ public class UserRepositoryTest {
         for (UserInfo userInfo : userInfoList) {
             System.out.println("address" + userInfo.getAddress());
         }
-
     }
+
 }
