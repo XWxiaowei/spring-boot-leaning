@@ -16,6 +16,7 @@ public class IndexController {
     }
     @RequestMapping("/home")
     public String home() {
-        return "layout/home";
+        System.out.println("你好");
+        return "layout";
     }
 }
