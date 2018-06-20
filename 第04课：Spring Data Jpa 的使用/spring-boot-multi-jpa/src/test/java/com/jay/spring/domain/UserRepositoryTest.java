@@ -1,5 +1,7 @@
 package com.jay.spring.domain;
 
+import com.jay.spring.domain.primary.UserInfo;
+import com.jay.spring.domain.primary.UserRepository;
 import com.jay.spring.model.UserRep;
 import org.junit.Assert;
 import org.junit.Test;
