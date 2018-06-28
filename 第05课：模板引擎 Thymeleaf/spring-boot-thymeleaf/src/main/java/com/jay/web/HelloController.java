@@ -11,9 +11,15 @@ import org.springframework.web.bind.annotation.RequestMapping;
  */
 @Controller
 public class HelloController {
-    @RequestMapping("/helloworld")
+    @RequestMapping("/")
     public String index(ModelMap map) {
         map.addAttribute("message", "http://www.ityouknow.com");
         return "hello";
     }
+
+    @RequestMapping("/index")
+    public String index() {
+        return "index";
+    }
+
 }
